@@ -1,0 +1,178 @@
+Query 1: How many students with depression belong to each home division?
+
+SELECT home_division, COUNT(*)
+FROM studentdep
+WHERE depression = 'Yes'
+GROUP BY home_division
+ORDER BY COUNT(*) DESC;
+
+Query 2: What are the average, maximum and minimum ages of students?
+
+SELECT
+    AVG(age),
+    MAX(age),
+    MIN(age)
+FROM studentdep;
+
+Query 3: What is the distribution of students with and without depression?
+
+SELECT depression, COUNT(*)
+FROM studentdep
+GROUP BY depression;
+
+Query 4: What is the average current semester of students?
+
+SELECT AVG(current_sem)
+FROM studentdep;
+
+Query 5: How does CGPA distribution differ between students with and without depression?
+
+Students are categorised into two groups based on their CGPA: 2.75 or above and below 2.75.
+
+SELECT
+    depression,
+    COUNT(CASE
+        WHEN current_cgpa >= 2.75 THEN 1
+    END) AS good_avg,
+    COUNT(CASE
+        WHEN current_cgpa < 2.75 THEN 1
+    END) AS below_avg
+FROM studentdep
+GROUP BY depression;
+
+Query 6: What is the gender distribution of students in the dataset?
+
+SELECT gender, COUNT(*)
+FROM studentdep
+GROUP BY gender;
+
+Query 7: How many male and female students are labelled as depressed?
+
+SELECT gender, COUNT(*)
+FROM studentdep
+WHERE depression = 'Yes'
+GROUP BY gender;
+
+Query 8: What is the distribution of health conditions among students from Dhaka?
+
+SELECT healthcon, COUNT(*)
+FROM studentdep
+WHERE home_division = 'Dhaka'
+GROUP BY healthcon;
+
+Query 9: What is the marital status distribution of students with depression from Dhaka?
+
+SELECT marital_status, COUNT(*)
+FROM studentdep
+WHERE home_division = 'Dhaka'
+AND depression = 'Yes'
+GROUP BY marital_status;
+
+Query 10: What is the average money without study for each family background category?
+
+SELECT
+    family_background,
+    AVG(money_without_study)
+FROM studentdep
+GROUP BY family_background;
+
+Query 11: What is the average money without study for depressed students across different family backgrounds?
+
+SELECT
+    family_background,
+    AVG(money_without_study)
+FROM studentdep
+WHERE depression = 'Yes'
+GROUP BY family_background;
+
+Query 12: How many students with depression belong to each family background category?
+
+SELECT family_background, COUNT(*)
+FROM studentdep
+WHERE depression = 'Yes'
+GROUP BY family_background;
+
+Query 13: How many students with depression fall into the age groups 17–23 and 24–28?
+
+SELECT
+    COUNT(CASE
+        WHEN age BETWEEN 17 AND 23 THEN 1
+    END) AS age_17_23,
+    COUNT(CASE
+        WHEN age BETWEEN 24 AND 28 THEN 1
+    END) AS age_24_28
+FROM studentdep
+WHERE depression = 'Yes';
+
+Query 14: How is the friend circle variable distributed among students with depression?
+
+SELECT friend_circle, COUNT(*)
+FROM studentdep
+WHERE depression = 'Yes'
+GROUP BY friend_circle;
+
+Query 15: What is the average CGPA across different health condition categories?
+
+SELECT
+    AVG(current_cgpa),
+    healthcon
+FROM studentdep
+GROUP BY healthcon;
+
+Query 16: What is the depression rate among male and female students?
+
+This query calculates the total students, number of depressed students and depression percentage for each gender.
+
+SELECT
+    gender,
+    COUNT(*) AS total_students,
+    COUNT(CASE
+        WHEN depression = 'true' THEN 1
+    END) AS depressed_students,
+    ROUND(
+        100.0 * COUNT(CASE
+            WHEN depression = 'true' THEN 1
+        END) / COUNT(*), 2
+    ) AS depression_rate
+FROM studentdep
+GROUP BY gender;
+
+Query 17: Which home divisions have the highest and lowest depression rates?
+
+This query calculates the depression rate for each division and sorts the results in descending order.
+
+SELECT
+    home_division,
+    COUNT(*) AS total_students,
+    COUNT(CASE
+        WHEN depression = 'true' THEN 1
+    END) AS depressed_students,
+    ROUND(
+        100.0 * COUNT(CASE
+            WHEN depression = 'true' THEN 1
+        END) / COUNT(*), 2
+    ) AS depression_rate
+FROM studentdep
+GROUP BY home_division
+ORDER BY depression_rate DESC;
+
+Query 18: How does the depression rate differ between the age groups 17–23 and 24–28?
+
+This query groups students by age range and calculates the depression rate within each group.
+
+SELECT
+    CASE
+        WHEN age BETWEEN 17 AND 23 THEN '17-23'
+        WHEN age BETWEEN 24 AND 28 THEN '24-28'
+    END AS age_group,
+    COUNT(*) AS total_students,
+    COUNT(CASE
+        WHEN depression = 'true' THEN 1
+    END) AS depressed_students,
+    ROUND(
+        100.0 * COUNT(CASE
+            WHEN depression = 'true' THEN 1
+        END) / COUNT(*), 2
+    ) AS depression_rate
+FROM studentdep
+GROUP BY age_group;
