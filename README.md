@@ -9,7 +9,7 @@ Key Insights
 
 5. The number of depressed students is highest in the middle-class family-background group. There are 731 students in this group, compared with 352 from lower-middle-class and 118 from rich-class backgrounds. These are counts, not depression rates, so they should not be interpreted as showing that middle-class students are more likely to experience depression.
 
-6. Reported spending without study differs by family background. Average spending is higher among students from rich-class backgrounds than among those from middle-class and lower-middle-class backgrounds. The same pattern appears when looking only at students classified as depressed.
+6. Average spending without study differs by family background. Average spending in depressed students are higher among students from rich-class backgrounds than among those from middle-class and lower-middle-class backgrounds. 
 
 7. Friend-circle status is common among depressed students. Of the 1,201 students classified as depressed, 773 have friend_circle = true, while 428 have friend_circle = false. This is a count-based comparison and does not establish whether having a friend circle is linked to a higher or lower depression rate.
 
