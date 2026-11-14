@@ -1,4 +1,5 @@
 Key Insights
+
 Total Students - 4,464
 
 Average Age - 22.6
