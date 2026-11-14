@@ -1,4 +1,12 @@
 Key Insights
+Total Students - 4,464
+
+Average Age - 22.6
+
+Average Semester of Studies - 5.4
+
+Percentage depressed students - 26.9%
+
 1. Depression rates are fairly similar across genders. Female students have a depression rate of 26.60%, while male students have a slightly higher rate of 27.27%. The difference is small, so gender does not appear to be a major distinguishing factor in this dataset.
 
 2. Depression rates vary across home divisions. Rangpur has the highest rate at 31.96%, followed by Rajshahi at 31.56% and Khulna at 31.02%. Dhaka has the lowest rate at 22.40%. This shows that the proportion of students reporting depression differs by division.
